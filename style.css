@@ -18,7 +18,7 @@ body {
   
   header h1 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   
   nav a {
@@ -51,12 +51,12 @@ body {
   }
   
   .header-row h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin: 0;
   }
   
   button {
-    background-color: #333;
+    background-color: #707070;
     color: #fff;
     border: 1px solid #444;
     padding: 0.5rem 1rem;
@@ -88,7 +88,7 @@ body {
   }
   
   .book-title {
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     font-weight: bold;
     color: #fff;
   }
