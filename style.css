@@ -10,6 +10,29 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
   }
+
+/* Container for the header-row */
+.header-row {
+  display: flex;
+  justify-content: space-between; /* Space between items */
+  align-items: center;
+}
+
+.sort-options {
+  display: flex;
+  align-items: center;  /* Align the button vertically with the content */
+}
+
+.book-meta {
+  display: flex;
+  justify-content: space-between; /* Ensure that the rating and date are spaced out properly */
+  align-items: center; /* Align rating and date vertically */
+}
+
+.book-rating {
+  margin-right: 10px; /* Optional, adjust spacing between rating and date */
+}
+
   
   
   header {
@@ -61,10 +84,10 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   button {
-    background-color: #707070;
+    background-color: #70707000;
     color: #fff;
     border: 1px solid #444;
-    padding: 0.5rem 0.5rem;
+    padding: 0.3rem 0.3rem;
     cursor: pointer;
     border-radius: 4px;
   }
