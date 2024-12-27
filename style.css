@@ -88,18 +88,18 @@ body {
   }
   
   .book-title {
-    font-size: 1.0rem;
+    font-size: 0.9rem;
     color: #fff;
   }
   
   .book-author {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #aaa;
     margin-top: 0.2rem;
   }
   
   .book-status {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: #777;
     margin-top: 0.3rem;
   }
@@ -109,7 +109,7 @@ body {
   }
   
   .book-rating {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #ffde66; /* Gold color for stars */
   }
   

@@ -1,10 +1,57 @@
-// Utility to fetch and parse CSV
-async function fetchBooks() {
+document.addEventListener('DOMContentLoaded', async () => {
+    let books = await fetchBooks();
+    renderBooks(books);
+  
+    // Handle sort selection
+    const sortBySelect = document.getElementById('sort-by');
+    sortBySelect.addEventListener('change', () => {
+      const sortValue = sortBySelect.value;
+      const sortedBooks = sortBooks(books, sortValue);
+      renderBooks(sortedBooks);
+    });
+  });
+  
+  async function fetchBooks() {
     const response = await fetch('books.csv');
     const text = await response.text();
     const parsed = Papa.parse(text, { header: true });
-    return parsed.data;
+    return parsed.data.map(book => ({
+      ...book,
+      Rating: parseFloat(book.Rating) || 0, // Convert rating to number for sorting
+    }));
   }
+  
+  function sortBooks(books, sortOption) {
+    const sortedBooks = [...books];
+    if (sortOption === 'rating-desc') {
+      sortedBooks.sort((a, b) => b.Rating - a.Rating); // High to Low
+    } else if (sortOption === 'rating-asc') {
+      sortedBooks.sort((a, b) => a.Rating - b.Rating); // Low to High
+    }
+    return sortedBooks;
+  }
+  
+  function renderBooks(books) {
+    const bookList = document.getElementById('book-list');
+    bookList.innerHTML = ''; // Clear the current list
+  
+    books.forEach(book => {
+      const listItem = document.createElement('li');
+      listItem.innerHTML = `
+        <div class="book-info">
+          <div class="book-title">${book.Title || 'Unknown Title'}</div>
+          <div class="book-author">${book.Author || 'Unknown Author'}</div>
+          ${book.Status ? `<div class="book-status">${book.Status}</div>` : ''}
+        </div>
+        <div class="book-meta">
+          <div class="book-rating">${'★'.repeat(book.Rating || 0)}${'☆'.repeat(5 - (book.Rating || 0))}</div>
+          <div class="book-date">${book.Date || 'Unknown Date'}</div>
+        </div>
+      `;
+      bookList.appendChild(listItem);
+    });
+  }
+  
   
   // Parse CSV file into an array of objects
   function parseCSV(data) {

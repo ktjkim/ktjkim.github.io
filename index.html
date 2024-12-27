@@ -19,7 +19,14 @@
     <section id="books">
       <div class="header-row">
         <h2>Books</h2>
-        <button id="sort-button">Sort by: Date</button>
+        <div class="sort-options">
+            <label for="sort-by">Sort by:</label>
+            <select id="sort-by">
+              <option value="none">None</option>
+              <option value="rating-desc">Rating (High to Low)</option>
+              <option value="rating-asc">Rating (Low to High)</option>
+            </select>
+        </div>  
       </div>
       <ul id="book-list">
         <!-- Book list will be populated dynamically -->
