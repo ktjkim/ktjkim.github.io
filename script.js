@@ -1,3 +1,4 @@
+// Sort functionality
 document.getElementById('sort-button').addEventListener('click', () => {
     const bookList = document.getElementById('book-list');
     const books = Array.from(bookList.children);
