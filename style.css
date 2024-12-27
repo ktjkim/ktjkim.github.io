@@ -18,20 +18,28 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 
+/* To align the button with the rating column */
 .sort-options {
   display: flex;
   align-items: center;  /* Align the button vertically with the content */
 }
 
+/* Styling for each book entry */
 .book-meta {
   display: flex;
-  justify-content: space-between; /* Ensure that the rating and date are spaced out properly */
-  align-items: center; /* Align rating and date vertically */
+  flex-direction: column; /* Stack the rating and date vertically */
+  align-items: flex-start; /* Align left, or you can change it to center */
+  margin-top: 10px; /* Optional, adjust space between rating and date */
 }
 
 .book-rating {
-  margin-right: 10px; /* Optional, adjust spacing between rating and date */
+  margin-bottom: 5px; /* Optional, adjust space between rating and date */
 }
+
+.book-date {
+  font-size: 0.9em; /* Optional, style the date differently */
+}
+
 
   
   
@@ -87,7 +95,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #70707000;
     color: #fff;
     border: 1px solid #444;
-    padding: 0.3rem 0.3rem;
+    padding: 0.5rem 0.5rem;
     cursor: pointer;
     border-radius: 4px;
   }
