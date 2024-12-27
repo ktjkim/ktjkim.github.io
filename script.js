@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderBooks(sortedBooks);  // Re-render sorted books
 
         // Toggle between sorting by rating and date
-        if (sortValue === 'rating-desc') {
+        if (sortValue === 'dates-desc') {
             sortButton.dataset.sortValue = 'date-desc';
             sortButton.textContent = 'Date';
         } else {
