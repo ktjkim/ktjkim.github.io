@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     // Default to "Thoughts" tab
-    showTab('thoughts');
+    showTab('books');
 });
 
 async function fetchBooks() {
