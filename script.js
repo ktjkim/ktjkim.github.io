@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Toggle between sorting by rating and date
         if (sortValue === 'rating-desc') {
-            sortButton.dataset.sortValue = 'rating-desc';
-            sortButton.textContent = 'Rating';
-        } else {
             sortButton.dataset.sortValue = 'date-desc';
-            sortButton.textContent = 'Date';
+            sortButton.textContent = 'Sort by Date';
+        } else {
+            sortButton.dataset.sortValue = 'rating-desc';
+            sortButton.textContent = 'Sort by Rating';
         }
     });
 });
@@ -67,9 +67,8 @@ function formatDate(date) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Get month and pad single digits
     return `${year}-${month}`;
-}  
-  
-  
+}
+
   // Parse CSV file into an array of objects
   function parseCSV(data) {
     const rows = data.split('\n').map(row => row.trim()).filter(row => row); // Split by line
