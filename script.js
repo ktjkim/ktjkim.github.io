@@ -9,11 +9,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       const sortedBooks = sortBooks(books, sortValue);
       renderBooks(sortedBooks);
   
-      // Toggle sort order between 'rating-desc' and 'rating-asc'
+      // Toggle between rating-desc and date-desc
       if (sortValue === 'rating-desc') {
-        sortButton.dataset.sortValue = 'rating-asc';
+        sortButton.dataset.sortValue = 'date-desc';
+        sortButton.textContent = 'Sort by Date (Newest First)';
       } else {
         sortButton.dataset.sortValue = 'rating-desc';
+        sortButton.textContent = 'Sort by Rating (High to Low)';
       }
     });
   });
@@ -25,15 +27,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     return parsed.data.map(book => ({
       ...book,
       Rating: parseFloat(book.Rating) || 0, // Convert rating to number for sorting
+      Date: new Date(book.Date), // Convert date string to Date object for sorting
     }));
   }
   
   function sortBooks(books, sortOption) {
     const sortedBooks = [...books];
     if (sortOption === 'rating-desc') {
-      sortedBooks.sort((a, b) => b.Rating - a.Rating); // High to Low
-    } else if (sortOption === 'rating-asc') {
-      sortedBooks.sort((a, b) => a.Rating - b.Rating); // Low to High
+      sortedBooks.sort((a, b) => b.Rating - a.Rating); // High to Low by Rating
+    } else if (sortOption === 'date-desc') {
+      sortedBooks.sort((a, b) => b.Date - a.Date); // Newest to Oldest by Date
     }
     return sortedBooks;
   }
@@ -52,12 +55,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         </div>
         <div class="book-meta">
           <div class="book-rating">${'★'.repeat(book.Rating || 0)}${'☆'.repeat(5 - (book.Rating || 0))}</div>
-          <div class="book-date">${book.Date || 'Unknown Date'}</div>
+          <div class="book-date">${book.Date.toLocaleDateString() || 'Unknown Date'}</div>
         </div>
       `;
       bookList.appendChild(listItem);
     });
   }
+  
   
   // Parse CSV file into an array of objects
   function parseCSV(data) {
