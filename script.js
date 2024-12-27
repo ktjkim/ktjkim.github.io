@@ -1,9 +1,20 @@
 // Utility to fetch and parse CSV
 async function fetchBooks() {
-    const response = await fetch('books.csv'); // Path to your CSV file
-    const text = await response.text();
-    return parseCSV(text);
+    try {
+      const response = await fetch('books.csv');
+      if (!response.ok) {
+        console.error('Failed to fetch CSV:', response.statusText);
+        return [];
+      }
+      const text = await response.text();
+      console.log('CSV file content:', text); // Debugging
+      return parseCSV(text);
+    } catch (error) {
+      console.error('Error fetching CSV:', error);
+      return [];
+    }
   }
+  
   
   // Parse CSV file into an array of objects
   function parseCSV(data) {
