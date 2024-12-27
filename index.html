@@ -10,13 +10,13 @@
   <header>
     <h1>Katie Kim</h1>
     <nav>
-      <a href="#thoughts">Thoughts</a>
-      <a href="#books" class="active">Books</a>
+      <a href="#thoughts" class="tab-link" id="thoughts-link">Thoughts</a>
+      <a href="#books" class="tab-link active" id="books-link">Books</a>
     </nav>
   </header>
 
   <main>
-    <section id="books">
+    <section id="books" class="tab-content active">
       <div class="header-row">
         <h2>Books</h2>
         <div class="sort-options">
@@ -27,12 +27,13 @@
         <!-- Book list will be populated dynamically -->
       </ul>
     </section>
-    <section id="thoughts">
+    <section id="thoughts" class="tab-content">
         <div class="header-row">
             <h2>Thoughts</h2>
         </div>
     </section>
   </main>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
   <script src="script.js"></script>
 </body>

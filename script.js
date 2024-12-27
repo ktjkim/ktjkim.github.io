@@ -1,3 +1,37 @@
+// Get the links and the content sections
+const thoughtsLink = document.getElementById('thoughts-link');
+const booksLink = document.getElementById('books-link');
+const thoughtsSection = document.getElementById('thoughts');
+const booksSection = document.getElementById('books');
+
+// Add event listeners to the links
+thoughtsLink.addEventListener('click', function(e) {
+  e.preventDefault();
+  switchTab('thoughts');
+});
+
+booksLink.addEventListener('click', function(e) {
+  e.preventDefault();
+  switchTab('books');
+});
+
+// Function to switch tabs
+function switchTab(tab) {
+  // Remove active class from both links and sections
+  document.querySelectorAll('.tab-link').forEach(link => link.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+  // Add active class to the clicked link and corresponding section
+  if (tab === 'thoughts') {
+    thoughtsLink.classList.add('active');
+    thoughtsSection.classList.add('active');
+  } else {
+    booksLink.classList.add('active');
+    booksSection.classList.add('active');
+  }
+}
+
+
 document.addEventListener('DOMContentLoaded', async () => {
     let books = await fetchBooks();  // Fetch books data
     renderBooks(books);  // Initial render of books
@@ -87,4 +121,5 @@ function formatDate(date) {
   document.addEventListener('DOMContentLoaded', () => {
     renderBooks();
   });
+  
   
