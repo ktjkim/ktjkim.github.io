@@ -1,20 +1,10 @@
 // Utility to fetch and parse CSV
 async function fetchBooks() {
-    try {
-      const response = await fetch('books.csv');
-      if (!response.ok) {
-        console.error('Failed to fetch CSV:', response.statusText);
-        return [];
-      }
-      const text = await response.text();
-      console.log('CSV file content:', text); // Debugging
-      return parseCSV(text);
-    } catch (error) {
-      console.error('Error fetching CSV:', error);
-      return [];
-    }
+    const response = await fetch('books.csv');
+    const text = await response.text();
+    const parsed = Papa.parse(text, { header: true });
+    return parsed.data;
   }
-  
   
   // Parse CSV file into an array of objects
   function parseCSV(data) {
