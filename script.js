@@ -1,13 +1,20 @@
 document.addEventListener('DOMContentLoaded', async () => {
     let books = await fetchBooks();
     renderBooks(books);
-  
-    // Handle sort selection
-    const sortBySelect = document.getElementById('sort-by');
-    sortBySelect.addEventListener('change', () => {
-      const sortValue = sortBySelect.value;
+    
+    // Handle sort button click
+    const sortButton = document.getElementById('sort-button');
+    sortButton.addEventListener('click', () => {
+      const sortValue = sortButton.dataset.sortValue || 'rating-desc';
       const sortedBooks = sortBooks(books, sortValue);
       renderBooks(sortedBooks);
+  
+      // Toggle sort order between 'rating-desc' and 'rating-asc'
+      if (sortValue === 'rating-desc') {
+        sortButton.dataset.sortValue = 'rating-asc';
+      } else {
+        sortButton.dataset.sortValue = 'rating-desc';
+      }
     });
   });
   
@@ -52,7 +59,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
   
-  
   // Parse CSV file into an array of objects
   function parseCSV(data) {
     const rows = data.split('\n').map(row => row.trim()).filter(row => row); // Split by line
@@ -67,48 +73,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
   
-  // Render book list
-  async function renderBooks() {
-    const books = await fetchBooks();
-    const bookList = document.getElementById('book-list');
-  
-    books.forEach(book => {
-      const listItem = document.createElement('li');
-      listItem.innerHTML = `
-        <div class="book-info">
-          <div class="book-title">${book.Title}</div>
-          <div class="book-author">${book.Author}</div>
-          ${book.Status ? `<div class="book-status">${book.Status}</div>` : ''}
-        </div>
-        <div class="book-meta">
-          <div class="book-rating">${'★'.repeat(book.Rating)}${'☆'.repeat(5 - book.Rating)}</div>
-          <div class="book-date">${book.Date}</div>
-        </div>
-      `;
-      bookList.appendChild(listItem);
-    });
-  }
-  
-  // Sort functionality
-  function setupSorting() {
-    document.getElementById('sort-button').addEventListener('click', () => {
-      const bookList = document.getElementById('book-list');
-      const books = Array.from(bookList.children);
-  
-      books.sort((a, b) => {
-        const dateA = new Date(a.querySelector('.book-date').textContent.trim());
-        const dateB = new Date(b.querySelector('.book-date').textContent.trim());
-        return dateB - dateA;
-      });
-  
-      bookList.innerHTML = '';
-      books.forEach(book => bookList.appendChild(book));
-    });
-  }
-  
   // Initialize
   document.addEventListener('DOMContentLoaded', () => {
     renderBooks();
-    setupSorting();
   });
   
