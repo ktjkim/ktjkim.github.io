@@ -2,17 +2,72 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-}
-
-header {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  header {
+    padding: 1rem;
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 1rem;
+  }
+  
+  nav a.active {
+    border-bottom: 2px solid #ffffff;
+  }
+  
+  main {
+    padding: 2rem;
+  }
+  
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  #book-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #book-list li {
+    padding: 1rem;
+    border-bottom: 1px solid #333;
+  }
+  
+  .book-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .book-author, .book-status, .book-rating, .book-date {
+    margin-top: 0.3rem;
+  }
+  
+  button {
     background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-section {
-    padding: 20px;
-    text-align: center;
-}
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #444;
+  }
+  

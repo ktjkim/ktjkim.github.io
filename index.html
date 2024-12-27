@@ -1,17 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Personal Website</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books - Katie Kim</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Personal Website!</h1>
-    </header>
-    <section>
-        <p>Hi, I'm Your Name. This is my personal website built with GitHub Pages.</p>
+  <header>
+    <h1>Katie Kim</h1>
+    <nav>
+      <a href="#thoughts">Thoughts</a>
+      <a href="#books" class="active">Books</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="books">
+      <div class="header-row">
+        <h2>Books</h2>
+        <button id="sort-button">Sort by: Date</button>
+      </div>
+      <ul id="book-list">
+        <li>
+          <div class="book-title">Master of the Senate: The Years of Lyndon Johnson III</div>
+          <div class="book-author">Robert A. Caro</div>
+          <div class="book-status">Work in progress</div>
+          <div class="book-rating">★★★★☆</div>
+          <div class="book-date">2024-10</div>
+        </li>
+        <li>
+          <div class="book-title">Speaker for the Dead</div>
+          <div class="book-author">Orson Scott Card</div>
+          <div class="book-status">Ender is a perpetual deus ex machina</div>
+          <div class="book-rating">★★★☆☆</div>
+          <div class="book-date">2024-10</div>
+        </li>
+        <!-- Add more books here -->
+      </ul>
     </section>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
