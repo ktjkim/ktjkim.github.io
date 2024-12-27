@@ -18,6 +18,25 @@ document.addEventListener('DOMContentLoaded', async () => {
             sortButton.textContent = 'Rating';
         }
     });
+
+    // Handle tab switching
+    const thoughtsTab = document.getElementById('thoughts-tab');
+    const booksTab = document.getElementById('books-tab');
+    const thoughtsSection = document.getElementById('thoughts');
+    const booksSection = document.getElementById('books');
+
+    thoughtsTab.addEventListener('click', (event) => {
+        event.preventDefault();
+        showTab('thoughts');
+    });
+
+    booksTab.addEventListener('click', (event) => {
+        event.preventDefault();
+        showTab('books');
+    });
+
+    // Default to "Thoughts" tab
+    showTab('thoughts');
 });
 
 async function fetchBooks() {
@@ -69,17 +88,22 @@ function formatDate(date) {
     return `${year}-${month}`;
 }
 
-  // Parse CSV file into an array of objects
-  function parseCSV(data) {
-    const rows = data.split('\n').map(row => row.trim()).filter(row => row); // Split by line
-    const headers = rows.shift().split(','); // Extract headers
-  
-    return rows.map(row => {
-      const values = row.split(',');
-      return headers.reduce((acc, header, index) => {
-        acc[header.trim()] = values[index]?.trim();
-        return acc;
-      }, {});
-    });
-  }
-  
+// Switch between tabs
+function showTab(tab) {
+    const thoughtsSection = document.getElementById('thoughts');
+    const booksSection = document.getElementById('books');
+    const thoughtsTab = document.getElementById('thoughts-tab');
+    const booksTab = document.getElementById('books-tab');
+
+    if (tab === 'thoughts') {
+        thoughtsSection.style.display = 'block';
+        booksSection.style.display = 'none';
+        thoughtsTab.classList.add('active');
+        booksTab.classList.remove('active');
+    } else {
+        booksSection.style.display = 'block';
+        thoughtsSection.style.display = 'none';
+        booksTab.classList.add('active');
+        thoughtsTab.classList.remove('active');
+    }
+}

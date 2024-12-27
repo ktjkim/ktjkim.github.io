@@ -11,6 +11,29 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
   }
 
+/* Basic styling for the tabs */
+nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+nav a.active {
+  color: #007bff;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content#thoughts,
+.tab-content#books {
+  display: block;
+}
+
+
 /* Container for the header-row */
 .header-row {
   display: flex;
