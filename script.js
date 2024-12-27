@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Toggle between rating-desc and date-desc
       if (sortValue === 'rating-desc') {
         sortButton.dataset.sortValue = 'date-desc';
-        sortButton.textContent = 'Sort by Date (Newest First)';
+        sortButton.textContent = 'Date';
       } else {
         sortButton.dataset.sortValue = 'rating-desc';
-        sortButton.textContent = 'Sort by Rating (High to Low)';
+        sortButton.textContent = 'Rating';
       }
     });
   });
@@ -55,12 +55,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         </div>
         <div class="book-meta">
           <div class="book-rating">${'★'.repeat(book.Rating || 0)}${'☆'.repeat(5 - (book.Rating || 0))}</div>
-          <div class="book-date">${book.Date.toLocaleDateString() || 'Unknown Date'}</div>
+          <div class="book-date">${formatDate(book.Date)}</div>
         </div>
       `;
       bookList.appendChild(listItem);
     });
   }
+  
+  // Function to format the date as YYYY-MM
+  function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Get month and pad single digits
+    return `${year}-${month}`;
+  }
+  
   
   
   // Parse CSV file into an array of objects
