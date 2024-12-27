@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Toggle between sorting by rating and date
         if (sortValue === 'rating-desc') {
             sortButton.dataset.sortValue = 'date-desc';
-            sortButton.textContent = 'Sort by Date';
+            sortButton.textContent = 'Date';
         } else {
             sortButton.dataset.sortValue = 'rating-desc';
-            sortButton.textContent = 'Sort by Rating';
+            sortButton.textContent = 'Rating';
         }
     });
 });
