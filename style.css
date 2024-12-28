@@ -96,13 +96,17 @@ button:hover {
   background-color: var(--button-hover-bg-color);
 }
 
+#books {
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 /* Book list */
 #book-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  max-width: 600px;
-  text-align: center;
 }
 
 #book-list li {
