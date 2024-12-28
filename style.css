@@ -190,12 +190,9 @@ nav a.active {
   .inspiration-url {
     font-size: 0.9rem;
     color: #fff;
+    text-decoration: none;
   }
 
-.inspiration-url a {
-  color: #fff;  /* Set hyperlink color to white */
-  text-decoration: none;
-}
 
 .inspiration-url a:hover {
     cursor: pointer;
@@ -203,6 +200,6 @@ nav a.active {
 
 .inspiration-notes {
   font-size: 0.75rem;
-  color: #aaa;
+  color: #777;
   margin-top: 0.2rem; 
 }
