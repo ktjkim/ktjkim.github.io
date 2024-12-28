@@ -47,7 +47,7 @@ nav a {
 }
 
 nav a.active {
-  color: var(--accent-color);
+  color: var(--text-color-light);
 }
 
 nav a:hover {
@@ -89,7 +89,7 @@ button {
   padding: 0.4rem 0.5rem;
   cursor: pointer;
   border-radius: 4px;
-  transition: background-color 0.3s;
+  transition: background-color 0.1s;
 }
 
 button:hover {
@@ -170,7 +170,7 @@ button:hover {
   font-size: 0.9rem;
   color: var(--text-color-light);
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.1s;
 }
 
 .inspiration-url a:hover {
