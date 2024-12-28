@@ -19,25 +19,26 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
+    showTab('books');
     // Handle tab switching
-    const thoughtsTab = document.getElementById('thoughts-tab');
-    const booksTab = document.getElementById('books-tab');
-    const inspirationTab = document.getElementById('inspiration-tab');
+    // const thoughtsTab = document.getElementById('thoughts-tab');
+    // const booksTab = document.getElementById('books-tab');
+    // const inspirationTab = document.getElementById('inspiration-tab');
 
-    thoughtsTab.addEventListener('click', (event) => {
-        event.preventDefault();
-        showTab('thoughts');
-    });
+    // thoughtsTab.addEventListener('click', (event) => {
+    //     event.preventDefault();
+    //     showTab('thoughts');
+    // });
 
-    booksTab.addEventListener('click', (event) => {
-        event.preventDefault();
-        showTab('books');
-    });
+    // booksTab.addEventListener('click', (event) => {
+    //     event.preventDefault();
+    //     showTab('books');
+    // });
 
-    inspirationTab.addEventListener('click', (event) => {
-        event.preventDefault();
-        showTab('inspiration');
-    })
+    // inspirationTab.addEventListener('click', (event) => {
+    //     event.preventDefault();
+    //     showTab('inspiration');
+    // })
     
 
     // Default to "Thoughts" tab
