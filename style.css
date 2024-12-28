@@ -181,20 +181,20 @@ nav a.active {
     margin-top: 0.3rem;
   }
   
-  .url-item {
+  .inspiration-url {
     margin-bottom: 1rem;
     padding: 0.5rem;
 }
 
-.url-item a {
+.inspiration-url a {
     text-decoration: none;
 }
 
-.url-item a:hover {
+.inspiration-url a:hover {
     cursor: pointer;
 }
 
-.url-item p {
+.inspiration-url p {
     margin: 0.5rem 0 0;
     color: #555;
 }
