@@ -94,31 +94,44 @@ function formatDate(date) {
 }
 
 // Switch between tabs
+// function showTab(tab) {
+//     const thoughtsSection = document.getElementById('thoughts');
+//     const booksSection = document.getElementById('books');
+//     const inspirationSection = document.getElementById('inspiration');
+//     const thoughtsTab = document.getElementById('thoughts-tab');
+//     const booksTab = document.getElementById('books-tab');
+//     const inspirationTab = document.getElementById('inspiration-tab');
+
+//     // Hide all sections and remove active class from all tabs
+//     thoughtsSection.style.display = 'none';
+//     booksSection.style.display = 'none';
+//     inspirationSection.style.display = 'none';
+//     thoughtsTab.classList.remove('active');
+//     booksTab.classList.remove('active');
+//     inspirationTab.classList.remove('active');
+
+//     // Show the selected tab and add active class to the corresponding tab button
+//     if (tab === 'thoughts') {
+//         thoughtsSection.style.display = 'block';
+//         thoughtsTab.classList.add('active');
+//     } else if (tab === 'books') {
+//         booksSection.style.display = 'block';
+//         booksTab.classList.add('active');
+//     } else if (tab === 'inspiration') {
+//         inspirationSection.style.display = 'block';
+//         inspirationTab.classList.add('active');
+//     }
+// }
+
+
 function showTab(tab) {
-    const thoughtsSection = document.getElementById('thoughts');
-    const booksSection = document.getElementById('books');
-    const inspirationSection = document.getElementById('inspiration');
-    const thoughtsTab = document.getElementById('thoughts-tab');
-    const booksTab = document.getElementById('books-tab');
-    const inspirationTab = document.getElementById('inspiration-tab');
+    const sections = ['thoughts', 'books', 'inspiration'];
+    sections.forEach(section => {
+        const sectionElement = document.getElementById(section);
+        const tabElement = document.getElementById(`${section}-tab`);
+        const isActive = section === tab;
 
-    // Hide all sections and remove active class from all tabs
-    thoughtsSection.style.display = 'none';
-    booksSection.style.display = 'none';
-    inspirationSection.style.display = 'none';
-    thoughtsTab.classList.remove('active');
-    booksTab.classList.remove('active');
-    inspirationTab.classList.remove('active');
-
-    // Show the selected tab and add active class to the corresponding tab button
-    if (tab === 'thoughts') {
-        thoughtsSection.style.display = 'block';
-        thoughtsTab.classList.add('active');
-    } else if (tab === 'books') {
-        booksSection.style.display = 'block';
-        booksTab.classList.add('active');
-    } else if (tab === 'inspiration') {
-        inspirationSection.style.display = 'block';
-        inspirationTab.classList.add('active');
-    }
+        sectionElement.style.display = isActive ? 'block' : 'none';
+        tabElement.classList.toggle('active', isActive);
+    });
 }
