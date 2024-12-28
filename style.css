@@ -154,6 +154,12 @@ button:hover {
 }
 
 /* Inspiration section */
+#inspiration {
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 #inspiration-list {
   list-style: none;
   padding: 0;
