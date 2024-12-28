@@ -32,18 +32,6 @@ function initializeTabs() {
     });
 }
 
-function initializeTabs() {
-    const tabs = ['thoughts', 'books', 'inspiration'];
-    tabs.forEach(tab => {
-        const tabButton = document.getElementById(`${tab}-tab`);
-        tabButton.addEventListener('click', event => {
-            event.preventDefault();
-            showTab(tab);
-            window.location.hash = tab;
-        });
-    });
-}
-
 function initializeSort(books) {
     const sortButton = document.getElementById('sort-button');
     sortButton.addEventListener('click', () => {
