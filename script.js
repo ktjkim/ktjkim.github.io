@@ -1,23 +1,9 @@
 document.addEventListener('DOMContentLoaded', async () => {
     let books = await fetchBooks();  // Fetch books data
     renderBooks(books);  // Initial render of books
-    
-    // Handle sort button click
-    const sortButton = document.getElementById('sort-button');
-    sortButton.addEventListener('click', () => {
-        const sortValue = sortButton.dataset.sortValue || 'rating-desc';
-        const sortedBooks = sortBooks(books, sortValue);  // Sort books based on the selected option
-        renderBooks(sortedBooks);  // Re-render sorted books
 
-        // Toggle between sorting by rating and date
-        if (sortValue === 'rating-desc') {
-            sortButton.dataset.sortValue = 'date-desc';
-            sortButton.textContent = 'Date';
-        } else {
-            sortButton.dataset.sortValue = 'rating-desc';
-            sortButton.textContent = 'Rating';
-        }
-    });
+    // Initialize sorting functionality
+    initializeSort(books);
 
     // Initialize tab switching functionality
     initializeTabs();
@@ -47,6 +33,21 @@ function initializeTabs() {
         });
     });
 }
+
+function initializeSort(books) {
+    const sortButton = document.getElementById('sort-button');
+    sortButton.addEventListener('click', () => {
+        const sortValue = sortButton.dataset.sortValue || 'rating-desc';
+        const sortedBooks = sortBooks(books, sortValue);
+        renderBooks(sortedBooks);
+
+        // Toggle sort order
+        const nextSortValue = sortValue === 'rating-desc' ? 'date-desc' : 'rating-desc';
+        sortButton.dataset.sortValue = nextSortValue;
+        sortButton.textContent = nextSortValue === 'rating-desc' ? 'Rating' : 'Date';
+    });
+}
+
 
 function sortBooks(books, sortOption) {
     const sortedBooks = [...books];
