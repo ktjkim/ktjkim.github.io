@@ -68,18 +68,6 @@ function sortBooks(books, sortOption) {
     return sortedBooks;
 }
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     // Assuming the CSV content is already available in the 'urls' variable
-//     const urls = `
-// URL,Notes
-// https://example.com,This is an example website.
-// https://google.com,Search engine for everything.
-// https://openai.com,Learn about AI from OpenAI.
-// `;
-
-//     // Render the URL list
-//     renderURLList(urls);
-// });
 
 function renderInspiration(urls) {
 
