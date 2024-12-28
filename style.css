@@ -181,10 +181,16 @@ nav a.active {
     margin-top: 0.3rem;
   }
   
+  #inspiration-list {
+    list-style: none;  /* Removes bullet points */
+    padding: 0;
+    margin: 0;
+  }
+  
   .inspiration-url {
     margin-bottom: 1rem;
     padding: 0.5rem;
-}
+  }
 
 .inspiration-url a {
     text-decoration: none;
