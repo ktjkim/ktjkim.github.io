@@ -103,7 +103,6 @@ nav a.active {
   #inspiration {
     max-width: 600px;
     margin: 0 auto;
-    margin-top: 1rem;
   }
 
   .header-row {
@@ -182,3 +181,25 @@ nav a.active {
     margin-top: 0.3rem;
   }
   
+  .url-item {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.url-item a {
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.url-item a:hover {
+    text-decoration: underline;
+}
+
+.url-item p {
+    margin: 0.5rem 0 0;
+    color: #555;
+}
