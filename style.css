@@ -154,6 +154,18 @@ button:hover {
   margin: 0;
 }
 
+#inspiration-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.inspiration-url {
+  color: var(--text-color-light);
+  text-decoration: none;
+}
+
 .inspiration-url a {
   font-size: 0.9rem;
   color: var(--text-color-light);
