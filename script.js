@@ -19,27 +19,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    showTab('books');
-    // Handle tab switching
-    // const thoughtsTab = document.getElementById('thoughts-tab');
-    // const booksTab = document.getElementById('books-tab');
-    // const inspirationTab = document.getElementById('inspiration-tab');
-
-    // thoughtsTab.addEventListener('click', (event) => {
-    //     event.preventDefault();
-    //     showTab('thoughts');
-    // });
-
-    // booksTab.addEventListener('click', (event) => {
-    //     event.preventDefault();
-    //     showTab('books');
-    // });
-
-    // inspirationTab.addEventListener('click', (event) => {
-    //     event.preventDefault();
-    //     showTab('inspiration');
-    // })
-    
+    // Initialize tab switching functionality
+    initializeTabs();
 
     // Default to "Thoughts" tab
     showTab('books');
@@ -54,6 +35,17 @@ async function fetchBooks() {
         Rating: parseFloat(book.Rating) || 0, // Convert rating to number for sorting
         Date: new Date(book.Date), // Convert date string to Date object for sorting
     }));
+}
+
+function initializeTabs() {
+    const tabs = ['thoughts', 'books', 'inspiration'];
+    tabs.forEach(tab => {
+        const tabButton = document.getElementById(`${tab}-tab`);
+        tabButton.addEventListener('click', event => {
+            event.preventDefault();
+            showTab(tab);
+        });
+    });
 }
 
 function sortBooks(books, sortOption) {
