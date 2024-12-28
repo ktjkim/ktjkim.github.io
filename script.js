@@ -5,23 +5,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Initialize sorting functionality
     initializeSort(books);
 
+    let urls = await fetchInspiration();
+    renderInspiration(urls);
+
     // Initialize tab switching functionality
     initializeTabs();
 
     // Default to "Thoughts" tab
     showTab('books');
 });
-
-async function fetchBooks() {
-    const response = await fetch('books.csv');
-    const text = await response.text();
-    const parsed = Papa.parse(text, { header: true });
-    return parsed.data.map(book => ({
-        ...book,
-        Rating: parseFloat(book.Rating) || 0, // Convert rating to number for sorting
-        Date: new Date(book.Date), // Convert date string to Date object for sorting
-    }));
-}
 
 function initializeTabs() {
     const tabs = ['thoughts', 'books', 'inspiration'];
@@ -48,6 +40,23 @@ function initializeSort(books) {
     });
 }
 
+async function fetchBooks() {
+    const response = await fetch('books.csv');
+    const text = await response.text();
+    const parsed = Papa.parse(text, { header: true });
+    return parsed.data.map(book => ({
+        ...book,
+        Rating: parseFloat(book.Rating) || 0, // Convert rating to number for sorting
+        Date: new Date(book.Date), // Convert date string to Date object for sorting
+    }));
+}
+
+async function fetchInspiration() {
+    const response = await fetch('inspiration.csv');
+    const text = await response.text();
+    const parsed = Papa.parse(text, { header: true});
+    return parsed.data;
+}
 
 function sortBooks(books, sortOption) {
     const sortedBooks = [...books];
@@ -58,6 +67,46 @@ function sortBooks(books, sortOption) {
     }
     return sortedBooks;
 }
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     // Assuming the CSV content is already available in the 'urls' variable
+//     const urls = `
+// URL,Notes
+// https://example.com,This is an example website.
+// https://google.com,Search engine for everything.
+// https://openai.com,Learn about AI from OpenAI.
+// `;
+
+//     // Render the URL list
+//     renderURLList(urls);
+// });
+
+function renderInspiration(urls) {
+
+    const urlListContainer = document.getElementById('inspiration-list');
+    urlListContainer.innerHTML = '';
+
+    urls.forEach(entry => {
+        const url = entry.URL || 'Unknown URL';
+        const notes = entry.Notes || 'Unknown note';
+        
+        const urlItem = document.createElement('div');
+        urlItem.classList.add('url-item');
+
+        const urlLink = document.createElement('a');
+        urlLink.href = url; 
+        urlLink.textContent = url; 
+        urlLink.target = '_blank';
+        urlItem.appendChild(urlLink);
+
+        const notesText = document.createElement('p');
+        notesText.textContent = notes;
+        urlItem.appendChild(notesText);
+        urlListContainer.appendChild(urlItem);
+
+    })
+}
+
 
 function renderBooks(books) {
     const bookList = document.getElementById('book-list');
@@ -86,37 +135,6 @@ function formatDate(date) {
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Get month and pad single digits
     return `${year}-${month}`;
 }
-
-// Switch between tabs
-// function showTab(tab) {
-//     const thoughtsSection = document.getElementById('thoughts');
-//     const booksSection = document.getElementById('books');
-//     const inspirationSection = document.getElementById('inspiration');
-//     const thoughtsTab = document.getElementById('thoughts-tab');
-//     const booksTab = document.getElementById('books-tab');
-//     const inspirationTab = document.getElementById('inspiration-tab');
-
-//     // Hide all sections and remove active class from all tabs
-//     thoughtsSection.style.display = 'none';
-//     booksSection.style.display = 'none';
-//     inspirationSection.style.display = 'none';
-//     thoughtsTab.classList.remove('active');
-//     booksTab.classList.remove('active');
-//     inspirationTab.classList.remove('active');
-
-//     // Show the selected tab and add active class to the corresponding tab button
-//     if (tab === 'thoughts') {
-//         thoughtsSection.style.display = 'block';
-//         thoughtsTab.classList.add('active');
-//     } else if (tab === 'books') {
-//         booksSection.style.display = 'block';
-//         booksTab.classList.add('active');
-//     } else if (tab === 'inspiration') {
-//         inspirationSection.style.display = 'block';
-//         inspirationTab.classList.add('active');
-//     }
-// }
-
 
 function showTab(tab) {
     const sections = ['thoughts', 'books', 'inspiration'];
