@@ -92,18 +92,28 @@ function formatDate(date) {
 function showTab(tab) {
     const thoughtsSection = document.getElementById('thoughts');
     const booksSection = document.getElementById('books');
+    const inspirationSection = document.getElementById('inspiration');
     const thoughtsTab = document.getElementById('thoughts-tab');
     const booksTab = document.getElementById('books-tab');
+    const inspirationTab = document.getElementById('inspiration-tab');
 
+    // Hide all sections and remove active class from all tabs
+    thoughtsSection.style.display = 'none';
+    booksSection.style.display = 'none';
+    inspirationSection.style.display = 'none';
+    thoughtsTab.classList.remove('active');
+    booksTab.classList.remove('active');
+    inspirationTab.classList.remove('active');
+
+    // Show the selected tab and add active class to the corresponding tab button
     if (tab === 'thoughts') {
         thoughtsSection.style.display = 'block';
-        booksSection.style.display = 'none';
         thoughtsTab.classList.add('active');
-        booksTab.classList.remove('active');
-    } else {
+    } else if (tab === 'books') {
         booksSection.style.display = 'block';
-        thoughtsSection.style.display = 'none';
         booksTab.classList.add('active');
-        thoughtsTab.classList.remove('active');
+    } else if (tab === 'inspiration') {
+        inspirationSection.style.display = 'block';
+        inspirationTab.classList.add('active');
     }
 }
