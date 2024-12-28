@@ -1,205 +1,173 @@
 /* General styles */
+:root {
+  --primary-bg-color: #121212;
+  --secondary-bg-color: #1e1e1e;
+  --text-color-light: #ffffff;
+  --text-color-dark: #333;
+  --accent-color: #007bff;
+  --button-bg-color: #70707000;
+  --button-hover-bg-color: #444;
+  --border-color: #333;
+  --highlight-color: #ffde66; /* Gold color for highlights */
+}
+
 body {
-    font-family: 'system-ui', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #121212;
-    color: #ffffff;
-  }
+  font-family: 'system-ui', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color-light);
+}
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: normal;
-  }
+  font-weight: normal;
+}
 
-/* Basic styling for the tabs */
+/* Header styles */
+header {
+  padding: 1rem;
+  background-color: var(--secondary-bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
 nav a {
-  margin-right: 15px;
+  color: #999;
   text-decoration: none;
-  color: #333;
+  margin: 0 1rem;
+  font-size: 1rem;
   cursor: pointer;
 }
 
 nav a.active {
-  color: #007bff;
+  color: var(--accent-color);
 }
 
+nav a:hover {
+  color: var(--text-color-light);
+}
+
+/* Main Content */
+main {
+  padding: 2rem;
+}
+
+/* Tab content */
 .tab-content {
   display: none;
 }
 
-.tab-content#thoughts,
-.tab-content#books {
+.tab-content.active {
   display: block;
 }
 
-
-/* Container for the header-row */
+/* Flex-based row containers */
 .header-row {
   display: flex;
-  justify-content: space-between; /* Space between items */
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
-/* To align the button with the rating column */
-.sort-options {
+.header-row h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Buttons */
+button {
+  background-color: var(--button-bg-color);
+  color: var(--text-color-light);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--button-hover-bg-color);
+}
+
+/* Book list */
+#book-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#book-list li {
   display: flex;
-  align-items: center;  /* Align the button vertically with the content */
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
-/* Styling for each book entry */
+.book-info {
+  max-width: 70%;
+}
+
+.book-title {
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+}
+
+.book-author {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-top: 0.2rem;
+}
+
+.book-status {
+  font-size: 0.75rem;
+  color: #777;
+  margin-top: 0.3rem;
+}
+
 .book-meta {
-  display: flex;
-  flex-direction: column; /* Stack the rating and date vertically */
-  align-items: flex-start; /* Align left, or you can change it to center */
-  margin-top: 10px; /* Optional, adjust space between rating and date */
+  text-align: right;
 }
 
 .book-rating {
-  margin-bottom: 5px; /* Optional, adjust space between rating and date */
+  font-size: 0.9rem;
+  color: var(--highlight-color);
 }
 
 .book-date {
-  font-size: 0.9em; /* Optional, style the date differently */
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 0.3rem;
 }
 
+/* Inspiration section */
+#inspiration-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-  
-  
-  header {
-    padding: 1rem;
-    background-color: #1e1e1e;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #333;
-  }
-  
-  header h1 {
-    margin: 0;
-    font-size: 1.2rem;
-  }
-  
-  nav a {
-    color: #999;
-    text-decoration: none;
-    margin: 0 1rem;
-    font-size: 1rem;
-  }
-  
-  nav a.active {
-    color: #fff;
-  }
-  
-  main {
-    padding: 2rem;
-  }
-  
-  /* Books section */
-  #books {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  #inspiration {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-  
-  .header-row h2 {
-    font-size: 1.2rem;
-    margin: 0;
-  }
-  
-  button {
-    background-color: #70707000;
-    color: #fff;
-    border: 1px solid #444;
-    padding: 0.4rem 0.5rem;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  button:hover {
-    background-color: #444;
-  }
-  
-  /* Book list */
-  #book-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  #book-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #333;
-  }
-  
-  .book-info {
-    max-width: 70%;
-  }
-  
-  .book-title {
-    font-size: 0.9rem;
-    color: #fff;
-  }
-  
-  .book-author {
-    font-size: 0.8rem;
-    color: #aaa;
-    margin-top: 0.2rem;
-  }
-  
-  .book-status {
-    font-size: 0.75rem;
-    color: #777;
-    margin-top: 0.3rem;
-  }
-  
-  .book-meta {
-    text-align: right;
-  }
-  
-  .book-rating {
-    font-size: 0.9rem;
-    color: #ffde66; /* Gold color for stars */
-  }
-  
-  .book-date {
-    font-size: 0.75rem;
-    color: #888;
-    margin-top: 0.3rem;
-  }
-  
-  #inspiration-list {
-    list-style: none;  /* Removes bullet points */
-    padding: 0;
-    margin: 0;
-  }
-  
-  .inspiration-url {
-    font-size: 0.9rem;
-    color: #fff;
-    text-decoration: none;
-  }
-
+.inspiration-url a {
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+  text-decoration: none;
+  transition: color 0.3s;
+}
 
 .inspiration-url a:hover {
-    cursor: pointer;
+  cursor: pointer;
+  color: var(--accent-color);
 }
 
 .inspiration-notes {
   font-size: 0.75rem;
   color: #777;
-  margin-top: 0.2rem; 
+  margin-top: 0.2rem;
 }
