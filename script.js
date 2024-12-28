@@ -22,8 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Handle tab switching
     const thoughtsTab = document.getElementById('thoughts-tab');
     const booksTab = document.getElementById('books-tab');
-    const thoughtsSection = document.getElementById('thoughts');
-    const booksSection = document.getElementById('books');
+    const inspirationTab = document.getElementById('inspiration-tab');
 
     thoughtsTab.addEventListener('click', (event) => {
         event.preventDefault();
@@ -34,6 +33,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         event.preventDefault();
         showTab('books');
     });
+
+    inspirationTab.addEventListener('click', (event) => {
+        event.preventDefault();
+        showTab('inspiration');
+    })
+    
 
     // Default to "Thoughts" tab
     showTab('books');
