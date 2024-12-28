@@ -160,7 +160,6 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
 }
 
 .inspiration-url {
