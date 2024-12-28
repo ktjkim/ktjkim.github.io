@@ -102,6 +102,7 @@ button:hover {
   padding: 0;
   margin: 0;
   max-width: 600px;
+  text-align: center;
 }
 
 #book-list li {
