@@ -21,6 +21,22 @@ function initializeTabs() {
     tabs.forEach(tab => {
         const tabButton = document.getElementById(`${tab}-tab`);
         tabButton.addEventListener('click', event => {
+            event.preventDefault();  // Prevent the default link behavior (scrolling)
+            showTab(tab);
+
+            // Update the URL hash without causing a page scroll
+            if (window.location.hash !== `#${tab}`) {
+                window.history.pushState(null, '', `#${tab}`);
+            }
+        });
+    });
+}
+
+function initializeTabs() {
+    const tabs = ['thoughts', 'books', 'inspiration'];
+    tabs.forEach(tab => {
+        const tabButton = document.getElementById(`${tab}-tab`);
+        tabButton.addEventListener('click', event => {
             event.preventDefault();
             showTab(tab);
             window.location.hash = tab;
