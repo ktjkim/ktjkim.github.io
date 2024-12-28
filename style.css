@@ -200,7 +200,8 @@ nav a.active {
     cursor: pointer;
 }
 
-.inspiration-url p {
-    margin: 0.5rem 0 0;
-    color: #555;
+.inspiration-notes {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-top: 0.2rem; 
 }
