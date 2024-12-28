@@ -74,24 +74,15 @@ function renderInspiration(urls) {
     const urlListContainer = document.getElementById('inspiration-list');
     urlListContainer.innerHTML = '';
 
-    urls.forEach(entry => {
-        const url = entry.URL || 'Unknown URL';
-        const notes = entry.Notes || 'Unknown note';
-        
-        const urlItem = document.createElement('div');
-        urlItem.classList.add('url-item');
-
-        const urlLink = document.createElement('a');
-        urlLink.href = url; 
-        urlLink.textContent = url; 
-        urlLink.target = '_blank';
-        urlItem.appendChild(urlLink);
-
-        const notesText = document.createElement('p');
-        notesText.textContent = notes;
-        urlItem.appendChild(notesText);
-        urlListContainer.appendChild(urlItem);
-
+    urls.forEach(url => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <div class="inspiration">
+                <div class="inspiration-url"><a href=${url.URL || '#'} target="_blank">${url.URL || 'Unknown URL'}</a></div>
+                <div class="inspiration-notes">${url.Notes || 'Unknown notes'}</div>
+            </div>
+        `;
+        urlListContainer.appendChild(listItem);
     })
 }
 
