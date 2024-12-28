@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Initialize tab switching functionality
     initializeTabs();
 
-    // Default to "Thoughts" tab
-    showTab('books');
+    // Default to the tab based on the URL hash or "books" if none
+    const initialTab = window.location.hash ? window.location.hash.substring(1) : 'books';
+    showTab(initialTab);
 });
 
 function initializeTabs() {
@@ -22,6 +23,7 @@ function initializeTabs() {
         tabButton.addEventListener('click', event => {
             event.preventDefault();
             showTab(tab);
+            window.location.hash = tab;
         });
     });
 }
@@ -126,3 +128,4 @@ function showTab(tab) {
         tabElement.classList.toggle('active', isActive);
     });
 }
+
