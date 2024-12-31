@@ -96,6 +96,12 @@ button:hover {
   background-color: var(--button-hover-bg-color);
 }
 
+#about {
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 #books {
   align-items: center;
   max-width: 600px;

@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function initializeTabs() {
-    const tabs = ['thoughts', 'books', 'inspiration'];
+    const tabs = ['about', 'books', 'inspiration'];
     tabs.forEach(tab => {
         const tabButton = document.getElementById(`${tab}-tab`);
         tabButton.addEventListener('click', event => {
@@ -122,7 +122,7 @@ function formatDate(date) {
 }
 
 function showTab(tab) {
-    const sections = ['thoughts', 'books', 'inspiration'];
+    const sections = ['about', 'books', 'inspiration'];
     sections.forEach(section => {
         const sectionElement = document.getElementById(section);
         const tabElement = document.getElementById(`${section}-tab`);
