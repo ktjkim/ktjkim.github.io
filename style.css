@@ -96,6 +96,12 @@ button:hover {
   background-color: var(--button-hover-bg-color);
 }
 
+#about {
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 #books {
   align-items: center;
   max-width: 600px;
@@ -198,4 +204,11 @@ button:hover {
   font-size: 0.75rem;
   color: #777;
   margin-top: 0.2rem;
+}
+
+#map {
+  position: relative;
+  width: 1000px;
+  height: 600px;
+  border: 2px solid #333;
 }

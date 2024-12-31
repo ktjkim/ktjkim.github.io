@@ -10,13 +10,15 @@
   <header>
     <h1>Katie Kim</h1>
     <nav>
-      <a href="#thoughts" id="thoughts-tab" class="active">Thoughts</a>
+      <a href="#about" id="about-tab" class="active">About</a>
       <a href="#books" id="books-tab">Books</a>
       <a href="#inspiration" id="inspiration-tab">Inspiration</a>
+      <a href="#map" id="map-tab">Map</a>
     </nav>
   </header>
 
   <main>
+
     <section id="books" class="tab-content">
       <div class="header-row">
         <h2>Books</h2>
@@ -29,12 +31,23 @@
       </ul>
     </section>
     
-    <section id="thoughts" class="tab-content">
+    <section id="about" class="tab-content">
       <div class="header-row">
-        <h2>Thoughts</h2>
-        <!-- Thoughts content here -->
+        <h2>About</h2>
       </div>
     </section>
+
+    <section id="map" class="tab-content">
+      <div id="map">
+        <svg id="svg-map" width="1000" height="600">
+          <g id="plane-group" transform="translate(-100, -100)">
+            <image id="plane" href="plane.png" width="30" height="30"></image>
+          </g>
+        </svg>
+      </div>
+      <button id="plane-button">Move Plane</button>
+    </section>
+
     <section id="inspiration" class="tab-content">
       <div class="header-row">
         <h2>Inspiration</h2>
@@ -43,9 +56,11 @@
         <!-- Inspiration list will be populated dynamically -->
       </ul>
     </section>
+
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
