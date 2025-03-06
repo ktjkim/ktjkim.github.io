@@ -27,9 +27,13 @@ async function drawMap(svg, currentIndex, planeGroup) {
     try {
         const planeButton = document.getElementById('plane-button');
         const world = await d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson");
-        const projection = d3.geoMercator()
-            .scale(160)  // Adjust scale if necessary
-            .translate([svg.attr("width") / 2, svg.attr("height") / 2]);  // Center map within SVG
+        const projection = d3.geoOrthographic()
+            .scale(200)  // Adjust scale if necessary
+            .translate([svg.attr("width") / 2, svg.attr("height") / 2])  // Center map within SVG
+            .center([0, 0]);
+            // .rotate([179, 0, 0]);
+
+        console.log(projection([0, 0]))
 
         const path = d3.geoPath().projection(projection);
 
@@ -42,47 +46,79 @@ async function drawMap(svg, currentIndex, planeGroup) {
             .attr("stroke", "#333");
         
         // Fetch coordinates after map is drawn
-        let coordinates = await fetchCoordinates(projection, currentIndex, planeGroup);    
+        let coordinates = await fetchCoordinates();    
 
         // Initialize plane at the first coordinate after loading CSV
         planeGroup.raise();
-        movePlane(currentIndex, coordinates, planeGroup); 
+        currentIndex = movePlane(svg, currentIndex, coordinates, planeGroup, projection); 
+        console.log(currentIndex);
         planeButton.addEventListener('click', () => {
-            currentIndex = movePlane(currentIndex, coordinates, planeGroup); 
+            currentIndex = movePlane(svg, currentIndex, coordinates, planeGroup, projection); 
         });
 
     } catch (error) {
         console.error("Error loading GeoJSON data:", error);
     }
 }
-async function fetchCoordinates(projection, currentIndex, planeGroup) {
+async function fetchCoordinates() {
     try {
         const response = await fetch('coordinates.csv');
         const data = await response.text();
 
         coordinates = data.split('\n').map(line => {
             const [lat, lon, code] = line.split(',');
-            const [x, y] = projection([+lon, +lat]); // Project lat/lon to map coordinates
-            console.log(lat, lon, code);
-            console.log(x, y);
-            return { x, y, code };
+            // const [x, y] = projection([+lon, +lat]); // Project lat/lon to map coordinates
+            // return { lat: +lat, lon: +lon, x, y, code };
+            return { lat: +lat, lon: +lon, code }
         }).filter(coord => coord && coord.code); // Remove invalid rows
         return coordinates;
     } catch (error) {
         console.error('Error loading coordinates:', error);
     }
 }
-function movePlane(currentIndex, coordinates, planeGroup) {
+function movePlane(svg, currentIndex, coordinates, planeGroup, projection) {
     if (coordinates.length === 0) return; // Skip if no coordinates are loaded
     if (currentIndex >= coordinates.length) {
         currentIndex = 0; // Reset to the first coordinate
     }
-    const { x, y } = coordinates[currentIndex];
+    let { lat, lon, code } = coordinates[currentIndex];
+    // Rotate the globe to follow the plane
+    const currentAngle = projection.rotate();
+    // if (Math.abs(currentAngle[0] - lon) > 180) {
+    //     if (currentAngle[0] > 90) {
+    //         lon += 360;
+    //     } else {
+    //         lon -= 360;
+    //     }
+    // }
+    const targetAngle = [-lon, -lat];
+    console.log(currentAngle);
+    console.log(targetAngle);
+    // const angle = projection.rotate();
+    // projection.rotate([lon, lat]);
+
+    // Animate the rotation for the globe
+    d3.select("svg")
+        .transition()
+        .duration(1000)
+        .tween("rotate", function() {
+            const interpolate = d3.interpolate(currentAngle, targetAngle);
+            return function(t) {
+                projection.rotate(interpolate(t));
+                svg.selectAll("path").attr("d", d3.geoPath().projection(projection));
+            };
+        });
+
+    // projection = projection.rotate([-20, 0, 0])
+
+    const [x, y] = projection([lon, lat]); 
     console.log(coordinates[currentIndex]);
+    console.log(x);
+    console.log(y);
 
     planeGroup.transition()
         .duration(1000)
-        .attr("transform", `translate(${x}, ${y})`);
+        .attr("transform", `translate(485, 285)`);
 
     currentIndex++;
     return currentIndex;
